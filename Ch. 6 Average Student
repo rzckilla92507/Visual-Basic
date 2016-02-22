@@ -1,0 +1,75 @@
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDisplayData.Click
+
+        Dim counter As Integer
+        Dim StrResults As String = ""
+        Dim SngScores As Single = 0
+        Dim SngAverage As Single = 0
+        Dim SngListCount As Single = 0
+
+
+        'The number of items on the list is assignes to InListCount
+        SngListCount = Convert.ToSingle(LstStudentScore.Items.Count)
+
+        'This for loop will iterate through each item in the list
+        For counter = 0 To SngListCount - 1
+
+            'Convverts the student's score at the location of counter in the list and removes the percent sign
+            SngScores = Convert.ToSingle(LstStudentScore.Items(counter).SubItems(1).Text.Replace("&", ""))
+            SngAverage += SngScores
+
+
+        Next
+
+        SngAverage = SngAverage / SngListCount
+
+        StrResults = "The Average score is : " & Format(SngAverage, "0.00") & "&" & ControlChars.NewLine
+        StrResults &= "The number of scores: " & SngListCount
+        MessageBox.Show(StrResults, "Average Score")
+
+
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+
+        Me.Close()
+
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        'Create a new form
+        Dim StudentForm As New FrmStudentInfo
+
+        'Create a new dataset for student data
+        'Adds the name to the dataset
+        StudentForm.ShowDialog()
+        Do Until StudentForm.TxtStudentName.Text = ""
+            Dim StudentData As New ListViewItem(StudentForm.TxtStudentName.Text)
+
+
+            'Adds the test score to the set
+            StudentData.SubItems.Add(StudentForm.TxtTestScore.Text & "%")
+
+            'Checks to see that there is no null data
+            If Not StudentForm.TxtStudentName.Text = "" Then
+                LstStudentScore.Items.Add(StudentData)
+            End If
+            StudentForm.ShowDialog()
+
+        Loop
+
+    End Sub
+End Class
+
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Me.Close()
+    End Sub
+
+    Private Sub FrmStudentInfo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        TxtStudentName.Text = ""
+        TxtTestScore.Text = ""
+
+    End Sub
+End Class
