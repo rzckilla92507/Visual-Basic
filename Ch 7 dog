@@ -1,0 +1,156 @@
+
+    Dim GshrSolution As Short() = {3, 0, 1, 2, 3, 3, 0}
+    Dim GshrAnswer As Short() = {-1, -1, -1, -1, -1, -1, -1}
+
+    Dim GstrQuestions As String(,) = { _
+        {"English Springer Spaniel", "Akita", "Husky", "Bearded Collie", "dog051.jpg"}, _
+        {"Pug", "Whippet", "Fox Terrier", "English Setter", "dog50.jpg"}, _
+        {"Chow Chow", "Beagle", "Labrador Retriever", "Foxhound", "dog068.jpg"}, _
+        {"Great Dane", "Dacshund", "Samoyed", "Newfoundland", "dog044.jpg"}, _
+        {"Samoyed", "Pekingese", "English Setter", "Pomeranian", "dog088.jpg"}, _
+        {"Old Engish Sheepdog", "Saluki", "Rottweiler", "Poodle", "dog074.jpg"}, _
+        {"Collie", "Boston Terrier", "Bichon Frise", "Akita", "dog007.jpg"}}
+
+
+    Dim GshrCurrentQuestion As Short = 0
+
+    Private Sub DisplayQuestion(ByVal ShrQuestion As Short)
+
+        Dim ShrIndex As Short
+
+        If ShrQuestion < 0 Then
+            MessageBox.Show("You are already at the beginning of the quiz.", "Know Your Dogs Quiz")
+            GshrCurrentQuestion = 0
+            Exit Sub
+        End If
+
+        Select Case True
+            Case RadAnswer1.Checked
+                GshrAnswer(GshrCurrentQuestion) = 0
+                RadAnswer1.Checked = False
+            Case RadAnswer2.Checked
+                GshrAnswer(GshrCurrentQuestion) = 1
+                RadAnswer2.Checked = False
+            Case RadAnswer3.Checked
+                GshrAnswer(GshrCurrentQuestion) = 2
+                RadAnswer3.Checked = False
+            Case RadAnswer4.Checked
+                GshrAnswer(GshrCurrentQuestion) = 3
+                RadAnswer4.Checked = False
+        End Select
+
+        If ShrQuestion > GstrQuestions.GetUpperBound(0) Then
+
+            If MessageBox.Show("You have answered the last question. Would you like to display the final quiz result and exit the quiz?" _
+            & ControlChars.NewLine & ControlChars.NewLine _
+            & "Click No to return.", "End of Quiz", _
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question, _
+            MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
+
+                If QuizResult() Then
+                    MessageBox.Show("Congratulations! You passed!", "Know Your Dogs Quiz")
+                Else
+                    MessageBox.Show("Sorry, you did not pass the quiz.", "Know Your Dogs Quiz")
+                End If
+                Me.Close()
+            Else
+                GshrCurrentQuestion = Convert.ToInt16(GstrQuestions.GetUpperBound(0))
+            End If
+            Exit Sub
+        End If
+
+        For ShrIndex = 0 To 3
+            GrpAnswer.Controls(ShrIndex).Text = GstrQuestions(ShrQuestion, ShrIndex)
+        Next
+
+        PicQuestion.Image = Image.FromFile(GstrQuestions(ShrQuestion, 4))
+        StbQuestions.Panels(0).Text = "Question " & ShrQuestion + 1 & " of " & GstrQuestions.GetUpperBound(0) + 1
+
+        Select Case GshrAnswer(ShrQuestion)
+            Case 0
+                RadAnswer1.Checked = True
+            Case 1
+                RadAnswer2.Checked = True
+            Case 2
+                RadAnswer3.Checked = True
+            Case 3
+                RadAnswer4.Checked = True
+            Case 4
+                RadAnswer1.Checked = True
+        End Select
+
+        GshrCurrentQuestion = ShrQuestion
+
+    End Sub
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        DisplayQuestion(0)
+    End Sub
+
+    Private Sub MnuFirst_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuFirst.Click
+        DisplayQuestion(0)
+    End Sub
+
+    Private Sub MnuPrevious_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuPrevious.Click
+        DisplayQuestion(GshrCurrentQuestion - Convert.ToInt16(1))
+    End Sub
+
+    Private Sub MnuNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuNext.Click
+        DisplayQuestion(GshrCurrentQuestion + Convert.ToInt16(1))
+    End Sub
+
+    Private Sub MnuLast_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuLast.Click
+        DisplayQuestion(Convert.ToInt16(GstrQuestions.GetUpperBound(0)))
+    End Sub
+
+    Private Sub CmuPrevious_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmuPrevious.Click
+        MnuPrevious.PerformClick()
+    End Sub
+
+    Private Sub CmuNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmuNext.Click
+        MnuNext.PerformClick()
+    End Sub
+
+    Private Sub CmuFont_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmuFont.Click
+        MnuFont.PerformClick()
+    End Sub
+
+    Private Function QuizResult() As Boolean
+
+        Dim ShrIndex As Short
+
+        For ShrIndex = 0 To 6
+            If GshrSolution(ShrIndex) <> GshrAnswer(ShrIndex) Then
+                Return False
+            End If
+        Next
+        QuizResult = True
+
+    End Function
+
+    Private Sub MenuItem9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem9.Click
+
+        FodQuestion.Font = RadAnswer1.Font
+
+        If FodQuestion.ShowDialog() = DialogResult.OK Then
+            RadAnswer1.Font = FodQuestion.Font
+            RadAnswer2.Font = FodQuestion.Font
+            RadAnswer3.Font = FodQuestion.Font
+            RadAnswer4.Font = FodQuestion.Font
+
+        End If
+
+    End Sub
+
+    Private Sub MnuExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuExit.Click
+        Me.Close()
+    End Sub
+
+    Private Sub BtnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnNext.Click
+        MnuNext.PerformClick()
+    End Sub
+
+    Private Sub BtnPrevious_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnPrevious.Click
+        MnuPrevious.PerformClick()
+    End Sub
+End Class
