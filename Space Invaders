@@ -1,0 +1,1386 @@
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+        CreateInvaderArray()
+        CreateInvaderShotArray()
+        'Add any initialization after the InitializeComponent() call
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents BtnStart As System.Windows.Forms.Button
+    Friend WithEvents BtnQuit As System.Windows.Forms.Button
+    Friend WithEvents MoveComp As System.Windows.Forms.Timer
+    Friend WithEvents LblSpaceinvaders As System.Windows.Forms.Label
+    Friend WithEvents PicDrone As System.Windows.Forms.PictureBox
+    Friend WithEvents gamePanel As System.Windows.Forms.Panel
+    Friend WithEvents picShip As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader2 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader3 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader4 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader5 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader6 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader7 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader8 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader9 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader10 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader11 As System.Windows.Forms.PictureBox
+    Friend WithEvents Invader12 As System.Windows.Forms.PictureBox
+    Friend WithEvents Spaceship As System.Windows.Forms.PictureBox
+    Friend WithEvents ResetShot As System.Windows.Forms.Label
+    Friend WithEvents Shot3 As System.Windows.Forms.Label
+    Friend WithEvents Shot4 As System.Windows.Forms.Label
+    Friend WithEvents Shot5 As System.Windows.Forms.Label
+    Friend WithEvents Shot2 As System.Windows.Forms.Label
+    Friend WithEvents Shot1 As System.Windows.Forms.Label
+    Friend WithEvents MessageBox As System.Windows.Forms.Label
+    Friend WithEvents LblLevel As System.Windows.Forms.Label
+    Friend WithEvents LblScore As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot1 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot2 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot3 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot4 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot5 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot6 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot7 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot8 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot9 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot12 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot11 As System.Windows.Forms.Label
+    Friend WithEvents InvaderShot10 As System.Windows.Forms.Label
+    Friend WithEvents LblScoreboard As System.Windows.Forms.Label
+    Friend WithEvents Txt1 As System.Windows.Forms.TextBox
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents SBPanel As System.Windows.Forms.Panel
+    Friend WithEvents LblScore5 As System.Windows.Forms.Label
+    Friend WithEvents LblScore4 As System.Windows.Forms.Label
+    Friend WithEvents LblScore3 As System.Windows.Forms.Label
+    Friend WithEvents LblScore2 As System.Windows.Forms.Label
+    Friend WithEvents LblScore1 As System.Windows.Forms.Label
+    Friend WithEvents BtnMenu As System.Windows.Forms.Button
+    Friend WithEvents LblName1 As System.Windows.Forms.Label
+    Friend WithEvents LblName2 As System.Windows.Forms.Label
+    Friend WithEvents LblName3 As System.Windows.Forms.Label
+    Friend WithEvents LblName4 As System.Windows.Forms.Label
+    Friend WithEvents LblName5 As System.Windows.Forms.Label
+    Friend WithEvents TxtName As System.Windows.Forms.Label
+    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
+        Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(ParentFom))
+        Me.LblSpaceinvaders = New System.Windows.Forms.Label
+        Me.BtnStart = New System.Windows.Forms.Button
+        Me.BtnQuit = New System.Windows.Forms.Button
+        Me.PicDrone = New System.Windows.Forms.PictureBox
+        Me.MoveComp = New System.Windows.Forms.Timer(Me.components)
+        Me.picShip = New System.Windows.Forms.PictureBox
+        Me.gamePanel = New System.Windows.Forms.Panel
+        Me.InvaderShot12 = New System.Windows.Forms.Label
+        Me.InvaderShot11 = New System.Windows.Forms.Label
+        Me.InvaderShot10 = New System.Windows.Forms.Label
+        Me.InvaderShot9 = New System.Windows.Forms.Label
+        Me.InvaderShot8 = New System.Windows.Forms.Label
+        Me.InvaderShot7 = New System.Windows.Forms.Label
+        Me.InvaderShot6 = New System.Windows.Forms.Label
+        Me.InvaderShot5 = New System.Windows.Forms.Label
+        Me.InvaderShot4 = New System.Windows.Forms.Label
+        Me.InvaderShot3 = New System.Windows.Forms.Label
+        Me.InvaderShot2 = New System.Windows.Forms.Label
+        Me.InvaderShot1 = New System.Windows.Forms.Label
+        Me.Spaceship = New System.Windows.Forms.PictureBox
+        Me.LblScore = New System.Windows.Forms.Label
+        Me.LblLevel = New System.Windows.Forms.Label
+        Me.MessageBox = New System.Windows.Forms.Label
+        Me.Shot1 = New System.Windows.Forms.Label
+        Me.Shot2 = New System.Windows.Forms.Label
+        Me.Shot5 = New System.Windows.Forms.Label
+        Me.Shot4 = New System.Windows.Forms.Label
+        Me.Shot3 = New System.Windows.Forms.Label
+        Me.ResetShot = New System.Windows.Forms.Label
+        Me.Invader12 = New System.Windows.Forms.PictureBox
+        Me.Invader11 = New System.Windows.Forms.PictureBox
+        Me.Invader10 = New System.Windows.Forms.PictureBox
+        Me.Invader9 = New System.Windows.Forms.PictureBox
+        Me.Invader8 = New System.Windows.Forms.PictureBox
+        Me.Invader7 = New System.Windows.Forms.PictureBox
+        Me.Invader6 = New System.Windows.Forms.PictureBox
+        Me.Invader5 = New System.Windows.Forms.PictureBox
+        Me.Invader4 = New System.Windows.Forms.PictureBox
+        Me.Invader3 = New System.Windows.Forms.PictureBox
+        Me.Invader2 = New System.Windows.Forms.PictureBox
+        Me.Invader1 = New System.Windows.Forms.PictureBox
+        Me.SBPanel = New System.Windows.Forms.Panel
+        Me.BtnMenu = New System.Windows.Forms.Button
+        Me.LblName1 = New System.Windows.Forms.Label
+        Me.LblName2 = New System.Windows.Forms.Label
+        Me.LblName3 = New System.Windows.Forms.Label
+        Me.LblName4 = New System.Windows.Forms.Label
+        Me.LblName5 = New System.Windows.Forms.Label
+        Me.LblScore5 = New System.Windows.Forms.Label
+        Me.LblScore4 = New System.Windows.Forms.Label
+        Me.LblScore3 = New System.Windows.Forms.Label
+        Me.LblScore2 = New System.Windows.Forms.Label
+        Me.LblScore1 = New System.Windows.Forms.Label
+        Me.Txt1 = New System.Windows.Forms.TextBox
+        Me.TxtName = New System.Windows.Forms.Label
+        Me.LblScoreboard = New System.Windows.Forms.Label
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.gamePanel.SuspendLayout()
+        Me.SBPanel.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'LblSpaceinvaders
+        '
+        Me.LblSpaceinvaders.BackColor = System.Drawing.SystemColors.Desktop
+        Me.LblSpaceinvaders.Font = New System.Drawing.Font("Microsoft YaHei UI", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSpaceinvaders.ForeColor = System.Drawing.SystemColors.Control
+        Me.LblSpaceinvaders.Location = New System.Drawing.Point(80, 32)
+        Me.LblSpaceinvaders.Name = "LblSpaceinvaders"
+        Me.LblSpaceinvaders.Size = New System.Drawing.Size(544, 112)
+        Me.LblSpaceinvaders.TabIndex = 0
+        Me.LblSpaceinvaders.Text = "Space Invaders"
+        Me.LblSpaceinvaders.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'BtnStart
+        '
+        Me.BtnStart.BackColor = System.Drawing.Color.Lime
+        Me.BtnStart.Font = New System.Drawing.Font("Microsoft YaHei UI", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnStart.ForeColor = System.Drawing.Color.White
+        Me.BtnStart.Location = New System.Drawing.Point(80, 176)
+        Me.BtnStart.Name = "BtnStart"
+        Me.BtnStart.Size = New System.Drawing.Size(224, 104)
+        Me.BtnStart.TabIndex = 1
+        Me.BtnStart.Text = "Start Game"
+        '
+        'BtnQuit
+        '
+        Me.BtnQuit.BackColor = System.Drawing.Color.Red
+        Me.BtnQuit.Font = New System.Drawing.Font("Microsoft YaHei UI", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnQuit.ForeColor = System.Drawing.Color.White
+        Me.BtnQuit.Location = New System.Drawing.Point(400, 176)
+        Me.BtnQuit.Name = "BtnQuit"
+        Me.BtnQuit.Size = New System.Drawing.Size(224, 104)
+        Me.BtnQuit.TabIndex = 2
+        Me.BtnQuit.Text = "Quit Game"
+        '
+        'PicDrone
+        '
+        Me.PicDrone.Image = CType(resources.GetObject("PicDrone.Image"), System.Drawing.Image)
+        Me.PicDrone.Location = New System.Drawing.Point(416, 328)
+        Me.PicDrone.Name = "PicDrone"
+        Me.PicDrone.Size = New System.Drawing.Size(192, 152)
+        Me.PicDrone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PicDrone.TabIndex = 4
+        Me.PicDrone.TabStop = False
+        '
+        'MoveComp
+        '
+        '
+        'picShip
+        '
+        Me.picShip.Image = CType(resources.GetObject("picShip.Image"), System.Drawing.Image)
+        Me.picShip.Location = New System.Drawing.Point(112, 328)
+        Me.picShip.Name = "picShip"
+        Me.picShip.Size = New System.Drawing.Size(152, 152)
+        Me.picShip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picShip.TabIndex = 5
+        Me.picShip.TabStop = False
+        '
+        'gamePanel
+        '
+        Me.gamePanel.Controls.Add(Me.InvaderShot12)
+        Me.gamePanel.Controls.Add(Me.InvaderShot11)
+        Me.gamePanel.Controls.Add(Me.InvaderShot10)
+        Me.gamePanel.Controls.Add(Me.InvaderShot9)
+        Me.gamePanel.Controls.Add(Me.InvaderShot8)
+        Me.gamePanel.Controls.Add(Me.InvaderShot7)
+        Me.gamePanel.Controls.Add(Me.InvaderShot6)
+        Me.gamePanel.Controls.Add(Me.InvaderShot5)
+        Me.gamePanel.Controls.Add(Me.InvaderShot4)
+        Me.gamePanel.Controls.Add(Me.InvaderShot3)
+        Me.gamePanel.Controls.Add(Me.InvaderShot2)
+        Me.gamePanel.Controls.Add(Me.InvaderShot1)
+        Me.gamePanel.Controls.Add(Me.Spaceship)
+        Me.gamePanel.Controls.Add(Me.LblScore)
+        Me.gamePanel.Controls.Add(Me.LblLevel)
+        Me.gamePanel.Controls.Add(Me.MessageBox)
+        Me.gamePanel.Controls.Add(Me.Shot1)
+        Me.gamePanel.Controls.Add(Me.Shot2)
+        Me.gamePanel.Controls.Add(Me.Shot5)
+        Me.gamePanel.Controls.Add(Me.Shot4)
+        Me.gamePanel.Controls.Add(Me.Shot3)
+        Me.gamePanel.Controls.Add(Me.ResetShot)
+        Me.gamePanel.Controls.Add(Me.Invader12)
+        Me.gamePanel.Controls.Add(Me.Invader11)
+        Me.gamePanel.Controls.Add(Me.Invader10)
+        Me.gamePanel.Controls.Add(Me.Invader9)
+        Me.gamePanel.Controls.Add(Me.Invader8)
+        Me.gamePanel.Controls.Add(Me.Invader7)
+        Me.gamePanel.Controls.Add(Me.Invader6)
+        Me.gamePanel.Controls.Add(Me.Invader5)
+        Me.gamePanel.Controls.Add(Me.Invader4)
+        Me.gamePanel.Controls.Add(Me.Invader3)
+        Me.gamePanel.Controls.Add(Me.Invader2)
+        Me.gamePanel.Controls.Add(Me.Invader1)
+        Me.gamePanel.Location = New System.Drawing.Point(8, 8)
+        Me.gamePanel.Name = "gamePanel"
+        Me.gamePanel.Size = New System.Drawing.Size(824, 560)
+        Me.gamePanel.TabIndex = 6
+        Me.gamePanel.Visible = False
+        '
+        'InvaderShot12
+        '
+        Me.InvaderShot12.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot12.Location = New System.Drawing.Point(704, 232)
+        Me.InvaderShot12.Name = "InvaderShot12"
+        Me.InvaderShot12.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot12.TabIndex = 45
+        Me.InvaderShot12.Visible = False
+        '
+        'InvaderShot11
+        '
+        Me.InvaderShot11.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot11.Location = New System.Drawing.Point(576, 232)
+        Me.InvaderShot11.Name = "InvaderShot11"
+        Me.InvaderShot11.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot11.TabIndex = 44
+        Me.InvaderShot11.Visible = False
+        '
+        'InvaderShot10
+        '
+        Me.InvaderShot10.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot10.Location = New System.Drawing.Point(448, 232)
+        Me.InvaderShot10.Name = "InvaderShot10"
+        Me.InvaderShot10.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot10.TabIndex = 43
+        Me.InvaderShot10.Visible = False
+        '
+        'InvaderShot9
+        '
+        Me.InvaderShot9.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot9.Location = New System.Drawing.Point(320, 232)
+        Me.InvaderShot9.Name = "InvaderShot9"
+        Me.InvaderShot9.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot9.TabIndex = 42
+        Me.InvaderShot9.Visible = False
+        '
+        'InvaderShot8
+        '
+        Me.InvaderShot8.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot8.Location = New System.Drawing.Point(192, 232)
+        Me.InvaderShot8.Name = "InvaderShot8"
+        Me.InvaderShot8.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot8.TabIndex = 41
+        Me.InvaderShot8.Visible = False
+        '
+        'InvaderShot7
+        '
+        Me.InvaderShot7.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot7.Location = New System.Drawing.Point(64, 232)
+        Me.InvaderShot7.Name = "InvaderShot7"
+        Me.InvaderShot7.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot7.TabIndex = 40
+        Me.InvaderShot7.Visible = False
+        '
+        'InvaderShot6
+        '
+        Me.InvaderShot6.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot6.Location = New System.Drawing.Point(704, 120)
+        Me.InvaderShot6.Name = "InvaderShot6"
+        Me.InvaderShot6.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot6.TabIndex = 39
+        Me.InvaderShot6.Visible = False
+        '
+        'InvaderShot5
+        '
+        Me.InvaderShot5.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot5.Location = New System.Drawing.Point(576, 120)
+        Me.InvaderShot5.Name = "InvaderShot5"
+        Me.InvaderShot5.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot5.TabIndex = 38
+        Me.InvaderShot5.Visible = False
+        '
+        'InvaderShot4
+        '
+        Me.InvaderShot4.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot4.Location = New System.Drawing.Point(448, 120)
+        Me.InvaderShot4.Name = "InvaderShot4"
+        Me.InvaderShot4.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot4.TabIndex = 37
+        Me.InvaderShot4.Visible = False
+        '
+        'InvaderShot3
+        '
+        Me.InvaderShot3.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot3.Location = New System.Drawing.Point(320, 120)
+        Me.InvaderShot3.Name = "InvaderShot3"
+        Me.InvaderShot3.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot3.TabIndex = 36
+        Me.InvaderShot3.Visible = False
+        '
+        'InvaderShot2
+        '
+        Me.InvaderShot2.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot2.Location = New System.Drawing.Point(192, 120)
+        Me.InvaderShot2.Name = "InvaderShot2"
+        Me.InvaderShot2.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot2.TabIndex = 35
+        Me.InvaderShot2.Visible = False
+        '
+        'InvaderShot1
+        '
+        Me.InvaderShot1.BackColor = System.Drawing.Color.Red
+        Me.InvaderShot1.Location = New System.Drawing.Point(64, 120)
+        Me.InvaderShot1.Name = "InvaderShot1"
+        Me.InvaderShot1.Size = New System.Drawing.Size(8, 20)
+        Me.InvaderShot1.TabIndex = 34
+        Me.InvaderShot1.Visible = False
+        '
+        'Spaceship
+        '
+        Me.Spaceship.Image = CType(resources.GetObject("Spaceship.Image"), System.Drawing.Image)
+        Me.Spaceship.Location = New System.Drawing.Point(56, 472)
+        Me.Spaceship.Name = "Spaceship"
+        Me.Spaceship.Size = New System.Drawing.Size(56, 72)
+        Me.Spaceship.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Spaceship.TabIndex = 24
+        Me.Spaceship.TabStop = False
+        '
+        'LblScore
+        '
+        Me.LblScore.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblScore.ForeColor = System.Drawing.SystemColors.Control
+        Me.LblScore.Location = New System.Drawing.Point(672, 0)
+        Me.LblScore.Name = "LblScore"
+        Me.LblScore.Size = New System.Drawing.Size(120, 32)
+        Me.LblScore.TabIndex = 33
+        Me.LblScore.Text = "Score: 0"
+        Me.LblScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblLevel
+        '
+        Me.LblLevel.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblLevel.ForeColor = System.Drawing.SystemColors.Control
+        Me.LblLevel.Location = New System.Drawing.Point(512, 0)
+        Me.LblLevel.Name = "LblLevel"
+        Me.LblLevel.Size = New System.Drawing.Size(120, 32)
+        Me.LblLevel.TabIndex = 32
+        Me.LblLevel.Text = "Level 1"
+        Me.LblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'MessageBox
+        '
+        Me.MessageBox.BackColor = System.Drawing.Color.Transparent
+        Me.MessageBox.Font = New System.Drawing.Font("Monotype Corsiva", 60.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MessageBox.ForeColor = System.Drawing.SystemColors.Control
+        Me.MessageBox.Location = New System.Drawing.Point(256, 320)
+        Me.MessageBox.Name = "MessageBox"
+        Me.MessageBox.Size = New System.Drawing.Size(416, 136)
+        Me.MessageBox.TabIndex = 31
+        Me.MessageBox.Text = "Game Over"
+        Me.MessageBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.MessageBox.Visible = False
+        '
+        'Shot1
+        '
+        Me.Shot1.BackColor = System.Drawing.SystemColors.Control
+        Me.Shot1.Location = New System.Drawing.Point(80, 472)
+        Me.Shot1.Name = "Shot1"
+        Me.Shot1.Size = New System.Drawing.Size(8, 20)
+        Me.Shot1.TabIndex = 30
+        '
+        'Shot2
+        '
+        Me.Shot2.BackColor = System.Drawing.SystemColors.Control
+        Me.Shot2.Location = New System.Drawing.Point(80, 472)
+        Me.Shot2.Name = "Shot2"
+        Me.Shot2.Size = New System.Drawing.Size(8, 20)
+        Me.Shot2.TabIndex = 29
+        '
+        'Shot5
+        '
+        Me.Shot5.BackColor = System.Drawing.SystemColors.Control
+        Me.Shot5.Location = New System.Drawing.Point(80, 472)
+        Me.Shot5.Name = "Shot5"
+        Me.Shot5.Size = New System.Drawing.Size(8, 20)
+        Me.Shot5.TabIndex = 28
+        '
+        'Shot4
+        '
+        Me.Shot4.BackColor = System.Drawing.SystemColors.Control
+        Me.Shot4.Location = New System.Drawing.Point(80, 472)
+        Me.Shot4.Name = "Shot4"
+        Me.Shot4.Size = New System.Drawing.Size(8, 20)
+        Me.Shot4.TabIndex = 27
+        '
+        'Shot3
+        '
+        Me.Shot3.BackColor = System.Drawing.SystemColors.Control
+        Me.Shot3.Location = New System.Drawing.Point(80, 472)
+        Me.Shot3.Name = "Shot3"
+        Me.Shot3.Size = New System.Drawing.Size(8, 20)
+        Me.Shot3.TabIndex = 26
+        '
+        'ResetShot
+        '
+        Me.ResetShot.BackColor = System.Drawing.SystemColors.Control
+        Me.ResetShot.Location = New System.Drawing.Point(80, 472)
+        Me.ResetShot.Name = "ResetShot"
+        Me.ResetShot.Size = New System.Drawing.Size(8, 20)
+        Me.ResetShot.TabIndex = 25
+        '
+        'Invader12
+        '
+        Me.Invader12.Image = CType(resources.GetObject("Invader12.Image"), System.Drawing.Image)
+        Me.Invader12.Location = New System.Drawing.Point(672, 152)
+        Me.Invader12.Name = "Invader12"
+        Me.Invader12.Size = New System.Drawing.Size(80, 80)
+        Me.Invader12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader12.TabIndex = 23
+        Me.Invader12.TabStop = False
+        '
+        'Invader11
+        '
+        Me.Invader11.Image = CType(resources.GetObject("Invader11.Image"), System.Drawing.Image)
+        Me.Invader11.Location = New System.Drawing.Point(544, 152)
+        Me.Invader11.Name = "Invader11"
+        Me.Invader11.Size = New System.Drawing.Size(80, 80)
+        Me.Invader11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader11.TabIndex = 22
+        Me.Invader11.TabStop = False
+        '
+        'Invader10
+        '
+        Me.Invader10.Image = CType(resources.GetObject("Invader10.Image"), System.Drawing.Image)
+        Me.Invader10.Location = New System.Drawing.Point(416, 152)
+        Me.Invader10.Name = "Invader10"
+        Me.Invader10.Size = New System.Drawing.Size(80, 80)
+        Me.Invader10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader10.TabIndex = 21
+        Me.Invader10.TabStop = False
+        '
+        'Invader9
+        '
+        Me.Invader9.Image = CType(resources.GetObject("Invader9.Image"), System.Drawing.Image)
+        Me.Invader9.Location = New System.Drawing.Point(288, 152)
+        Me.Invader9.Name = "Invader9"
+        Me.Invader9.Size = New System.Drawing.Size(80, 80)
+        Me.Invader9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader9.TabIndex = 20
+        Me.Invader9.TabStop = False
+        '
+        'Invader8
+        '
+        Me.Invader8.Image = CType(resources.GetObject("Invader8.Image"), System.Drawing.Image)
+        Me.Invader8.Location = New System.Drawing.Point(160, 152)
+        Me.Invader8.Name = "Invader8"
+        Me.Invader8.Size = New System.Drawing.Size(80, 80)
+        Me.Invader8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader8.TabIndex = 19
+        Me.Invader8.TabStop = False
+        '
+        'Invader7
+        '
+        Me.Invader7.Image = CType(resources.GetObject("Invader7.Image"), System.Drawing.Image)
+        Me.Invader7.Location = New System.Drawing.Point(32, 152)
+        Me.Invader7.Name = "Invader7"
+        Me.Invader7.Size = New System.Drawing.Size(80, 80)
+        Me.Invader7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader7.TabIndex = 18
+        Me.Invader7.TabStop = False
+        '
+        'Invader6
+        '
+        Me.Invader6.Image = CType(resources.GetObject("Invader6.Image"), System.Drawing.Image)
+        Me.Invader6.Location = New System.Drawing.Point(672, 40)
+        Me.Invader6.Name = "Invader6"
+        Me.Invader6.Size = New System.Drawing.Size(80, 80)
+        Me.Invader6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader6.TabIndex = 17
+        Me.Invader6.TabStop = False
+        '
+        'Invader5
+        '
+        Me.Invader5.Image = CType(resources.GetObject("Invader5.Image"), System.Drawing.Image)
+        Me.Invader5.Location = New System.Drawing.Point(544, 40)
+        Me.Invader5.Name = "Invader5"
+        Me.Invader5.Size = New System.Drawing.Size(80, 80)
+        Me.Invader5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader5.TabIndex = 16
+        Me.Invader5.TabStop = False
+        '
+        'Invader4
+        '
+        Me.Invader4.Image = CType(resources.GetObject("Invader4.Image"), System.Drawing.Image)
+        Me.Invader4.Location = New System.Drawing.Point(416, 40)
+        Me.Invader4.Name = "Invader4"
+        Me.Invader4.Size = New System.Drawing.Size(80, 80)
+        Me.Invader4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader4.TabIndex = 15
+        Me.Invader4.TabStop = False
+        '
+        'Invader3
+        '
+        Me.Invader3.Image = CType(resources.GetObject("Invader3.Image"), System.Drawing.Image)
+        Me.Invader3.Location = New System.Drawing.Point(288, 40)
+        Me.Invader3.Name = "Invader3"
+        Me.Invader3.Size = New System.Drawing.Size(80, 80)
+        Me.Invader3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader3.TabIndex = 14
+        Me.Invader3.TabStop = False
+        '
+        'Invader2
+        '
+        Me.Invader2.Image = CType(resources.GetObject("Invader2.Image"), System.Drawing.Image)
+        Me.Invader2.Location = New System.Drawing.Point(160, 40)
+        Me.Invader2.Name = "Invader2"
+        Me.Invader2.Size = New System.Drawing.Size(80, 80)
+        Me.Invader2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader2.TabIndex = 13
+        Me.Invader2.TabStop = False
+        '
+        'Invader1
+        '
+        Me.Invader1.Image = CType(resources.GetObject("Invader1.Image"), System.Drawing.Image)
+        Me.Invader1.Location = New System.Drawing.Point(32, 40)
+        Me.Invader1.Name = "Invader1"
+        Me.Invader1.Size = New System.Drawing.Size(80, 80)
+        Me.Invader1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Invader1.TabIndex = 12
+        Me.Invader1.TabStop = False
+        '
+        'SBPanel
+        '
+        Me.SBPanel.Controls.Add(Me.BtnMenu)
+        Me.SBPanel.Controls.Add(Me.LblName1)
+        Me.SBPanel.Controls.Add(Me.LblName2)
+        Me.SBPanel.Controls.Add(Me.LblName3)
+        Me.SBPanel.Controls.Add(Me.LblName4)
+        Me.SBPanel.Controls.Add(Me.LblName5)
+        Me.SBPanel.Controls.Add(Me.LblScore5)
+        Me.SBPanel.Controls.Add(Me.LblScore4)
+        Me.SBPanel.Controls.Add(Me.LblScore3)
+        Me.SBPanel.Controls.Add(Me.LblScore2)
+        Me.SBPanel.Controls.Add(Me.LblScore1)
+        Me.SBPanel.Controls.Add(Me.Txt1)
+        Me.SBPanel.Controls.Add(Me.TxtName)
+        Me.SBPanel.Controls.Add(Me.LblScoreboard)
+        Me.SBPanel.Location = New System.Drawing.Point(0, 0)
+        Me.SBPanel.Name = "SBPanel"
+        Me.SBPanel.Size = New System.Drawing.Size(832, 512)
+        Me.SBPanel.TabIndex = 7
+        Me.SBPanel.Visible = False
+        '
+        'BtnMenu
+        '
+        Me.BtnMenu.Font = New System.Drawing.Font("Microsoft YaHei UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnMenu.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.BtnMenu.Location = New System.Drawing.Point(624, 160)
+        Me.BtnMenu.Name = "BtnMenu"
+        Me.BtnMenu.Size = New System.Drawing.Size(152, 48)
+        Me.BtnMenu.TabIndex = 13
+        Me.BtnMenu.Text = "New Game"
+        '
+        'LblName1
+        '
+        Me.LblName1.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblName1.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblName1.Location = New System.Drawing.Point(216, 216)
+        Me.LblName1.Name = "LblName1"
+        Me.LblName1.Size = New System.Drawing.Size(184, 48)
+        Me.LblName1.TabIndex = 12
+        Me.LblName1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblName2
+        '
+        Me.LblName2.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblName2.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblName2.Location = New System.Drawing.Point(216, 272)
+        Me.LblName2.Name = "LblName2"
+        Me.LblName2.Size = New System.Drawing.Size(184, 48)
+        Me.LblName2.TabIndex = 11
+        Me.LblName2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblName3
+        '
+        Me.LblName3.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblName3.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblName3.Location = New System.Drawing.Point(216, 328)
+        Me.LblName3.Name = "LblName3"
+        Me.LblName3.Size = New System.Drawing.Size(184, 48)
+        Me.LblName3.TabIndex = 10
+        Me.LblName3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblName4
+        '
+        Me.LblName4.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblName4.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblName4.Location = New System.Drawing.Point(216, 384)
+        Me.LblName4.Name = "LblName4"
+        Me.LblName4.Size = New System.Drawing.Size(184, 48)
+        Me.LblName4.TabIndex = 9
+        Me.LblName4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblName5
+        '
+        Me.LblName5.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblName5.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblName5.Location = New System.Drawing.Point(216, 440)
+        Me.LblName5.Name = "LblName5"
+        Me.LblName5.Size = New System.Drawing.Size(184, 48)
+        Me.LblName5.TabIndex = 8
+        Me.LblName5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblScore5
+        '
+        Me.LblScore5.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblScore5.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblScore5.Location = New System.Drawing.Point(424, 440)
+        Me.LblScore5.Name = "LblScore5"
+        Me.LblScore5.Size = New System.Drawing.Size(184, 48)
+        Me.LblScore5.TabIndex = 7
+        Me.LblScore5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblScore4
+        '
+        Me.LblScore4.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblScore4.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblScore4.Location = New System.Drawing.Point(424, 384)
+        Me.LblScore4.Name = "LblScore4"
+        Me.LblScore4.Size = New System.Drawing.Size(184, 48)
+        Me.LblScore4.TabIndex = 6
+        Me.LblScore4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblScore3
+        '
+        Me.LblScore3.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblScore3.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblScore3.Location = New System.Drawing.Point(424, 328)
+        Me.LblScore3.Name = "LblScore3"
+        Me.LblScore3.Size = New System.Drawing.Size(184, 48)
+        Me.LblScore3.TabIndex = 5
+        Me.LblScore3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblScore2
+        '
+        Me.LblScore2.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblScore2.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblScore2.Location = New System.Drawing.Point(424, 272)
+        Me.LblScore2.Name = "LblScore2"
+        Me.LblScore2.Size = New System.Drawing.Size(184, 48)
+        Me.LblScore2.TabIndex = 4
+        Me.LblScore2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblScore1
+        '
+        Me.LblScore1.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblScore1.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.LblScore1.Location = New System.Drawing.Point(424, 216)
+        Me.LblScore1.Name = "LblScore1"
+        Me.LblScore1.Size = New System.Drawing.Size(184, 48)
+        Me.LblScore1.TabIndex = 3
+        Me.LblScore1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Txt1
+        '
+        Me.Txt1.Location = New System.Drawing.Point(424, 160)
+        Me.Txt1.Multiline = True
+        Me.Txt1.Name = "Txt1"
+        Me.Txt1.Size = New System.Drawing.Size(184, 48)
+        Me.Txt1.TabIndex = 2
+        Me.Txt1.Text = ""
+        Me.Txt1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TxtName
+        '
+        Me.TxtName.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtName.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.TxtName.Location = New System.Drawing.Point(216, 160)
+        Me.TxtName.Name = "TxtName"
+        Me.TxtName.Size = New System.Drawing.Size(184, 48)
+        Me.TxtName.TabIndex = 1
+        Me.TxtName.Text = "Name:"
+        Me.TxtName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblScoreboard
+        '
+        Me.LblScoreboard.Font = New System.Drawing.Font("Microsoft YaHei UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblScoreboard.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.LblScoreboard.Location = New System.Drawing.Point(200, 24)
+        Me.LblScoreboard.Name = "LblScoreboard"
+        Me.LblScoreboard.Size = New System.Drawing.Size(448, 120)
+        Me.LblScoreboard.TabIndex = 0
+        Me.LblScoreboard.Text = "Scoreboard"
+        Me.LblScoreboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 2500
+        '
+        'ParentFom
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+        Me.BackColor = System.Drawing.SystemColors.Desktop
+        Me.ClientSize = New System.Drawing.Size(832, 594)
+        Me.Controls.Add(Me.SBPanel)
+        Me.Controls.Add(Me.gamePanel)
+        Me.Controls.Add(Me.picShip)
+        Me.Controls.Add(Me.PicDrone)
+        Me.Controls.Add(Me.BtnQuit)
+        Me.Controls.Add(Me.BtnStart)
+        Me.Controls.Add(Me.LblSpaceinvaders)
+        Me.KeyPreview = True
+        Me.Name = "ParentFom"
+        Me.Text = "Form1"
+        Me.gamePanel.ResumeLayout(False)
+        Me.SBPanel.ResumeLayout(False)
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+#Region "Variables"
+
+    Dim ControlLeft As Boolean
+    Dim ControlRight As Boolean
+    Dim Fire As Boolean
+    Dim Fire1 As Boolean
+    Dim Fire2 As Boolean
+    Dim Fire3 As Boolean
+    Dim Fire4 As Boolean
+    Dim Fire5 As Boolean
+
+    Dim SpaceInvader(11) As PictureBox
+    Dim Locations(11) As System.Drawing.Point
+    Dim InvaderShot(11) As Boolean
+    Dim InvaderShotLabel(11) As Label
+
+    Dim MoveSpaceInvader As Integer = 5
+    Dim MoveShip As Integer = 40
+    Dim ShotSpeed As Integer = 20
+    Dim WhichInvader As Integer
+    Dim Complete As Integer
+    Dim Level As Integer = 1
+    Dim Score As Integer
+    Dim Ran As Integer
+
+    Dim Score1 As Integer = 100
+    Dim Score2 As Integer = 75
+    Dim Score3 As Integer = 24
+    Dim Score4 As Integer = 13
+    Dim Score5 As Integer = 5
+    Dim Name1 As String = "Tom"
+    Dim Name2 As String = "Sam"
+    Dim Name3 As String = "John"
+    Dim Name4 As String = "Jimmy"
+    Dim Name5 As String = "Sally"
+
+#End Region
+
+#Region "Buttons"
+
+    Private Sub BtnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStart.Click
+        LblSpaceinvaders.Hide()
+        BtnStart.Hide()
+        BtnQuit.Hide()
+        PicDrone.Hide()
+        PicShip.Hide()
+        GamePanel.Show()
+        MoveComp.Enabled = True
+        MoveComp.Start()
+
+    End Sub
+
+    Private Sub BtnQuit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnQuit.Click
+
+        Me.Close()
+
+    End Sub
+
+#End Region
+
+#Region "timers"
+
+    Private Sub moveComp_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MoveComp.Tick
+        If controlLeft = True Then
+            spaceShip.Left = spaceShip.Left - moveShip
+            resetShot.Left = resetShot.Left - moveShip
+
+            If fire1 = False Then
+                shot1.Left = shot1.Left - moveShip
+            End If
+
+            If fire2 = False Then
+                shot2.Left = shot2.Left - moveShip
+            End If
+
+            If fire3 = False Then
+                shot3.Left = shot3.Left - moveShip
+            End If
+
+            If fire4 = False Then
+                shot4.Left = shot4.Left - moveShip
+            End If
+
+            If fire5 = False Then
+                shot5.Left = shot5.Left - moveShip
+            End If
+
+            If spaceShip.Left < 0 Then 'new code
+                spaceShip.Left = spaceShip.Left + moveShip
+                resetShot.Left = resetShot.Left + moveShip
+                If fire1 = False Then
+                    shot1.Left = shot1.Left + moveShip
+                End If
+
+                If fire2 = False Then
+                    shot2.Left = shot2.Left + moveShip
+                End If
+
+                If fire3 = False Then
+                    shot3.Left = shot3.Left + moveShip
+                End If
+
+                If fire4 = False Then
+                    shot4.Left = shot4.Left + moveShip
+                End If
+
+                If fire5 = False Then
+                    shot5.Left = shot5.Left + moveShip
+                End If
+
+            End If
+        End If
+
+        If controlRight = True Then
+            spaceShip.Left = spaceShip.Left + moveShip
+            resetShot.Left = resetShot.Left + moveShip
+
+            If fire1 = False Then
+                shot1.Left = shot1.Left + moveShip
+            End If
+
+            If fire2 = False Then
+                shot2.Left = shot2.Left + moveShip
+            End If
+
+            If fire3 = False Then
+                shot3.Left = shot3.Left + moveShip
+            End If
+
+            If fire4 = False Then
+                shot4.Left = shot4.Left + moveShip
+            End If
+
+            If fire5 = False Then
+                shot5.Left = shot5.Left + moveShip
+            End If
+
+            If spaceShip.Left > Me.Width - spaceShip.Width Then 'new code
+                spaceShip.Left = spaceShip.Left - moveShip
+                resetShot.Left = resetShot.Left - moveShip
+
+                If fire1 = False Then
+                    shot1.Left = shot1.Left - moveShip
+                End If
+
+                If fire2 = False Then
+                    shot2.Left = shot2.Left - moveShip
+                End If
+
+                If fire3 = False Then
+                    shot3.Left = shot3.Left - moveShip
+                End If
+
+                If fire4 = False Then
+                    shot4.Left = shot4.Left - moveShip
+                End If
+
+                If fire5 = False Then
+                    shot5.Left = shot5.Left - moveShip
+                End If
+            End If
+        End If
+
+
+        moveInvader()
+        If fire = True Then
+            checkShot()
+        End If
+        moveShot()
+        moveInvaderShots()
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        Timer1.Stop()
+        SbPanel.Show()
+    End Sub
+
+#End Region
+
+#Region "KeyPresses"
+
+    Private Sub MoveCompStop(ByVal Sender As System.Object, ByVal E As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyUp
+        If E.KeyValue = Keys.Left Then
+            ControlLeft = False
+        End If
+        If E.KeyValue = Keys.Right Then
+            ControlRight = False
+        End If
+        If E.KeyValue = Keys.A Then
+            Fire = False
+        End If
+    End Sub
+
+    Private Sub MoveCompLeft(ByVal Sender As System.Object, ByVal E As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        If E.KeyValue = Keys.Left Then
+            ControlLeft = True
+        End If
+        If E.KeyValue = Keys.Right Then
+            ControlRight = True
+        End If
+        If E.KeyValue = Keys.A Then
+            Fire = True
+        End If
+    End Sub
+#End Region
+
+#Region "MySubs"
+
+    Private Sub MoveInvaderShots()
+        Dim I As Integer
+
+        For I = 0 To 11
+            Ran = CInt(Int((1000 * Rnd()) + 1))
+            If Ran = 1000 Then
+                InvaderShot(I) = True
+                InvaderShotLabel(I).Show()
+                If SpaceInvader(I).Top > 1000 Then
+                    InvaderShot(I) = False
+                    InvaderShotLabel(I).Hide()
+                End If
+            End If
+        Next
+        For I = 0 To 11
+            If InvaderShot(I) = True Then
+                InvaderShotLabel(I).Top = InvaderShotLabel(I).Top + 20
+                If InvaderShotLabel(I).Bounds.IntersectsWith(Spaceship.Bounds) Then
+                    PlayerDead()
+                End If
+                If InvaderShotLabel(I).Top > Me.Height Then
+                    InvaderShot(I) = False
+                    InvaderShotLabel(I).Hide()
+                    InvaderShotLabel(I).Location = SpaceInvader(I).Location
+                    InvaderShotLabel(I).Top = InvaderShotLabel(I).Top + 32
+                    InvaderShotLabel(I).Left = InvaderShotLabel(I).Left + 32
+                End If
+
+            End If
+        Next
+
+    End Sub
+
+    Private Sub Scoreboard()
+        If Score > Score1 Then
+            Score5 = Score4
+            Score4 = Score3
+            Score3 = Score2
+            Score2 = Score1
+            Score1 = Score
+            Name5 = Name4
+            Name4 = Name3
+            Name3 = Name2
+            Name2 = Name1
+            Name1 = TxtName.Text
+            LblName1.Text = Name1
+            LblName2.Text = Name2
+            LblName3.Text = Name3
+            LblName4.Text = Name4
+            LblName5.Text = Name5
+            LblName1.Text = Score1
+            LblName2.Text = Score2
+            LblName3.Text = Score3
+            LblName4.Text = Score4
+            LblName5.Text = Score5
+        End If
+
+        If Score > Score2 Then
+            Score5 = Score4
+            Score4 = Score3
+            Score3 = Score2
+            Score2 = Score
+            Name5 = Name4
+            Name4 = Name3
+            Name3 = Name2
+            Name2 = TxtName.Text
+            LblName2.Text = Name2
+            LblName3.Text = Name3
+            LblName4.Text = Name4
+            LblName5.Text = Name5
+            LblName2.Text = Score2
+            LblName3.Text = Score3
+            LblName4.Text = Score4
+            LblName5.Text = Score5
+        End If
+
+        If Score > Score3 Then
+            Score5 = Score4
+            Score4 = Score3
+            Score3 = Score
+            Name5 = Name4
+            Name4 = Name3
+            Name3 = TxtName.Text
+            LblName3.Text = Name3
+            LblName4.Text = Name4
+            LblName5.Text = Name5
+            LblName3.Text = Score3
+            LblName4.Text = Score4
+            LblName5.Text = Score5
+        End If
+
+        If Score > Score4 Then
+            Score5 = Score4
+            Score4 = Score
+            Name5 = Name4
+            Name4 = TxtName.Text
+            LblName4.Text = Name4
+            LblName5.Text = Name5
+            LblName4.Text = Score4
+            LblName5.Text = Score5
+        End If
+
+        If Score > Score5 Then
+            Score5 = Score
+            Name5 = TxtName.Text
+            LblName5.Text = Name5
+            LblName5.Text = Score5
+        End If
+    End Sub
+
+    Private Sub CreateInvaderShotArray()
+
+        InvaderShotLabel(0) = InvaderShot1
+        InvaderShotLabel(1) = InvaderShot2
+        InvaderShotLabel(2) = InvaderShot3
+        InvaderShotLabel(3) = InvaderShot4
+        InvaderShotLabel(4) = InvaderShot5
+        InvaderShotLabel(5) = InvaderShot6
+        InvaderShotLabel(6) = InvaderShot7
+        InvaderShotLabel(7) = InvaderShot8
+        InvaderShotLabel(8) = InvaderShot9
+        InvaderShotLabel(9) = InvaderShot10
+        InvaderShotLabel(10) = InvaderShot11
+        InvaderShotLabel(11) = InvaderShot12
+
+    End Sub
+
+    Private Sub CreateInvaderArray()
+
+        Dim I As Integer
+
+        SpaceInvader(0) = Invader1
+        SpaceInvader(1) = Invader2
+        SpaceInvader(2) = Invader3
+        SpaceInvader(3) = Invader4
+        SpaceInvader(4) = Invader5
+        SpaceInvader(5) = Invader6
+        SpaceInvader(6) = Invader7
+        SpaceInvader(7) = Invader8
+        SpaceInvader(8) = Invader9
+        SpaceInvader(9) = Invader10
+        SpaceInvader(10) = Invader11
+        SpaceInvader(11) = Invader12
+        For I = 0 To 11
+            Locations(I) = SpaceInvader(I).Location
+        Next
+    End Sub
+
+    Private Sub MoveInvader()
+
+        Dim I As Integer
+        For I = 0 To 11
+            SpaceInvader(I).Left = SpaceInvader(I).Left + MoveSpaceInvader
+            If InvaderShot(I) = False Then
+                InvaderShotLabel(I).Left = InvaderShotLabel(I).Left + MoveSpaceInvader
+            End If
+            If SpaceInvader(I).Bounds.IntersectsWith(Spaceship.Bounds) Then
+                PlayerDead()
+            End If
+        Next
+
+        If Invader6.Left > Me.Width - Invader6.Width Then
+            MoveSpaceInvader = MoveSpaceInvader * -1
+            For I = 0 To 11
+                SpaceInvader(I).Top = SpaceInvader(I).Top + 25
+                If InvaderShot(I) = False Then
+                    InvaderShotLabel(I).Top = InvaderShotLabel(I).Top + 25
+                End If
+            Next
+        End If
+
+        If Invader1.Left < 0 Then
+            MoveSpaceInvader = MoveSpaceInvader * -1
+            For I = 0 To 11
+                SpaceInvader(I).Top = SpaceInvader(I).Top + 25
+                If InvaderShot(I) = False Then
+                    InvaderShotLabel(I).Top = InvaderShotLabel(I).Top + 25
+                End If
+            Next
+        End If
+
+    End Sub
+
+    Private Sub CheckShot()
+        Fire = False
+        If Fire1 = False Then
+            Fire1 = True
+            Shot1.Show()
+            Exit Sub
+        End If
+        If Fire2 = False Then
+            Fire2 = True
+            Shot2.Show()
+            Exit Sub
+        End If
+        If Fire3 = False Then
+            Fire3 = True
+            Shot3.Show()
+            Exit Sub
+        End If
+        If Fire4 = False Then
+            Fire4 = True
+            Shot4.Show()
+            Exit Sub
+        End If
+        If Fire5 = False Then
+            Fire5 = True
+            Shot5.Show()
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub MoveShot()
+
+        Dim I As Integer
+
+        If Fire1 = True Then
+            Shot1.Top = Shot1.Top - ShotSpeed
+            For I = 0 To 11
+                If Shot1.Bounds.IntersectsWith(SpaceInvader(I).Bounds) Then
+                    WhichInvader = I
+                    Shot1Hit()
+                End If
+            Next
+            If Shot1.Top < 0 Then
+                Shot1.Hide()
+                Fire1 = False
+                Shot1.Location = ResetShot.Location
+            End If
+        End If
+
+        If Fire2 = True Then
+            Shot2.Top = Shot2.Top - ShotSpeed
+            For I = 0 To 11
+                If Shot2.Bounds.IntersectsWith(SpaceInvader(I).Bounds) Then
+                    WhichInvader = I
+                    Shot2Hit()
+                End If
+            Next
+            If Shot2.Top < 0 Then
+                Shot2.Hide()
+                Fire2 = False
+                Shot2.Location = ResetShot.Location
+            End If
+        End If
+
+        If Fire3 = True Then
+            Shot3.Top = Shot3.Top - ShotSpeed
+            For I = 0 To 11
+                If Shot3.Bounds.IntersectsWith(SpaceInvader(I).Bounds) Then
+                    WhichInvader = I
+                    Shot3Hit()
+                End If
+            Next
+            If Shot3.Top < 0 Then
+                Shot3.Hide()
+                Fire3 = False
+                Shot3.Location = ResetShot.Location
+            End If
+        End If
+
+        If Fire4 = True Then
+            Shot4.Top = Shot4.Top - ShotSpeed
+            For I = 0 To 11
+                If Shot4.Bounds.IntersectsWith(SpaceInvader(I).Bounds) Then
+                    WhichInvader = I
+                    Shot4Hit()
+                End If
+            Next
+            If Shot4.Top < 0 Then
+                Shot4.Hide()
+                Fire4 = False
+                Shot4.Location = ResetShot.Location
+            End If
+        End If
+
+        If Fire5 = True Then
+            Shot5.Top = Shot5.Top - ShotSpeed
+            For I = 0 To 11
+                If Shot5.Bounds.IntersectsWith(SpaceInvader(I).Bounds) Then
+                    WhichInvader = I
+                    Shot5Hit()
+                End If
+            Next
+            If Shot5.Top < 0 Then
+                Shot5.Hide()
+                Fire5 = False
+                Shot5.Location = ResetShot.Location
+            End If
+        End If
+
+    End Sub
+
+    Private Sub Shot1Hit()
+        Fire1 = False
+        Shot1.Hide()
+        Shot1.Location = ResetShot.Location
+        SpaceInvader(WhichInvader).Top = SpaceInvader(WhichInvader).Top + 10000
+        Complete += 1
+        If Complete = 12 Then
+            LevelComplete()
+        End If
+        Score = Score + 1
+        LblScore.Text = "Score: " & Score
+    End Sub
+
+    Private Sub Shot2Hit()
+        Fire2 = False
+        Shot2.Hide()
+        Shot2.Location = ResetShot.Location
+        SpaceInvader(WhichInvader).Top = SpaceInvader(WhichInvader).Top + 10000
+        Complete += 1
+        If Complete = 12 Then
+            LevelComplete()
+        End If
+        Score = Score + 1
+        LblScore.Text = "Score: " & Score
+    End Sub
+
+    Private Sub Shot3Hit()
+        Fire3 = False
+        Shot3.Hide()
+        Shot3.Location = ResetShot.Location
+        SpaceInvader(WhichInvader).Top = SpaceInvader(WhichInvader).Top + 10000
+        Complete += 1
+        If Complete = 12 Then
+            LevelComplete()
+        End If
+        Score = Score + 1
+        LblScore.Text = "Score: " & Score
+
+    End Sub
+
+    Private Sub Shot4Hit()
+        Fire4 = False
+        Shot4.Hide()
+        Shot4.Location = ResetShot.Location
+        SpaceInvader(WhichInvader).Top = SpaceInvader(WhichInvader).Top + 10000
+        Complete += 1
+        If Complete = 12 Then
+            LevelComplete()
+        End If
+        Score = Score + 1
+        LblScore.Text = "Score: " & Score
+    End Sub
+
+    Private Sub Shot5Hit()
+        Fire5 = False
+        Shot5.Hide()
+        Shot5.Location = ResetShot.Location
+        SpaceInvader(WhichInvader).Top = SpaceInvader(WhichInvader).Top + 10000
+        Complete += 1
+        If Complete = 12 Then
+            LevelComplete()
+        End If
+        Score = Score + 1
+        LblScore.Text = "Score: " & Score
+    End Sub
+
+    Private Sub PlayerDead()
+
+        MoveComp.Stop()
+        Spaceship.Image = Image.FromFile("Fire Ball.png")
+        MessageBox.Show()
+        Timer1.Enabled = True
+        Timer1.Start()
+    End Sub
+
+    Private Sub LevelComplete()
+
+        Dim I As Integer
+        Level = Level + 1
+        LblLevel.Text = "LEVEL" & Level
+
+        For I = 0 To 11
+            SpaceInvader(I).Location = Locations(I)
+        Next
+        Complete = 0
+
+        If Level > 1 Then
+            MoveSpaceInvader = 8
+        End If
+        If Level > 2 Then
+            MoveSpaceInvader = 11
+        End If
+        If Level > 3 Then
+            MoveSpaceInvader = 14
+        End If
+        If Level > 4 Then
+            MoveSpaceInvader = 17
+        End If
+    End Sub
+
+#End Region
+
+#Region "Text Boxes"
+
+    Private Sub Txt1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Txt1.KeyDown
+        If e.KeyValue = Keys.Enter Then
+            Scoreboard()
+            LblName1.Show()
+            LblName2.Show()
+            LblName3.Show()
+            LblName4.Show()
+            LblName5.Show()
+            LblScore1.Show()
+            LblScore2.Show()
+            LblScore3.Show()
+            LblScore4.Show()
+            LblScore5.Show()
+        End If
+    End Sub
+
+#End Region
+
+
+End Class
